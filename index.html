@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="./styles/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="./styles/styles.css" />
 
-	<title>PHP-Diary</title>
+	<title>EthanBostick-Portfolio</title>
 </head>
 <body>
 	<nav class="nav">
@@ -29,7 +29,21 @@
 		</div>
 	</nav>
 	<main class="main">
-		<div class="container">
+	<script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+
+	<div id="console-container" style="width: 800px; height: 600px; border: 1px solid #333;"></div>
+
+	<script>
+		// Initialize CheerpJ
+		cheerpjInit();
+
+		// Create a graphical console (looks like a terminal)
+		// Replace 'game.jar' with the exact name of your uploaded file
+		// Replace 'Main' with the name of your Main class (e.g., com.zork.Main)
+		cheerpjCreateDisplay(800, 600, document.getElementById("console-container"));
+		cheerpjRunJar("/textGame/Zork.jar", "/textGame/dungeonOfEthan.zork"); 
+	</script><div class="container">
+
 			<h1 class="main-heading">Entries</h1>
 			<div class="card">
 				<div class="card__image-container">

@@ -60,60 +60,41 @@
 
 	<script>
 		(async function() {
-			const consoleElement = document.getElementById('console-display');
-			
 			try {
-				// 1. Calculate the Real URL (for debugging)
-				// This handles both root domain and subfolders automatically
-				let baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
-				
-				// If we are in the root, we need to append the textGame path
-				// Adjust this if your index.html is not in the same root as textGame folder
-				if (!baseUrl.includes("textGame")) {
-					// If we are at root/, look in textGame/
-					// If we are already in textGame/ (unlikely), don't add it.
-				}
-				
-				// The paths CheerpJ uses
-				// "rootPath" is just the path part of the URL (e.g., /Portfolio/)
-				let rootPath = window.location.pathname;
-				if (rootPath.endsWith("index.html")) {
-					rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
-				}
-				if (!rootPath.endsWith("/")) {
-					rootPath += "/";
-				}
-
-				// Define the paths
-				const jarVirtualPath = "/app" + rootPath + "textGame/Zork.jar";
-				const mapVirtualPath = "/app" + rootPath + "textGame/dungeon.zork";
-				const realMapUrl = rootPath + "textGame/dungeon.zork";
-
-				// 2. PRE-FLIGHT CHECK
-				// We try to fetch the file via JS first to see if it exists.
-				console.log("Testing if file exists at URL:", realMapUrl);
-				const check = await fetch(realMapUrl);
-				
-				if (!check.ok) {
-					throw new Error(`Browser cannot download file! \nUrl: ${realMapUrl} \nServer Status: ${check.status} (${check.statusText})`);
-				} else {
-					console.log("File found! Starting Java...");
-				}
-
-				// 3. Start Java
 				await cheerpjInit();
-				consoleElement.innerHTML = ""; // Clear loading text
+				const consoleElement = document.getElementById('console-display');
+				consoleElement.innerHTML = ""; 
 				await cheerpjCreateDisplay(80, 25, consoleElement);
+
+				// --- THE FIX ---
+				// Don't use window.location.href (it includes #about)
+				// Use origin (https://site.com) + pathname (/folder/)
+				let cleanBase = window.location.origin + window.location.pathname;
+
+				// Ensure it ends with a slash and strip 'index.html'
+				if (cleanBase.endsWith("index.html")) {
+					cleanBase = cleanBase.substring(0, cleanBase.lastIndexOf("/"));
+				}
+				if (!cleanBase.endsWith("/")) {
+					cleanBase += "/";
+				}
+
+				// Construct the Clean URL
+				// Result: https://ethanbostick.github.io/textGame/dungeon.zork
+				const mapUrl = cleanBase + "textGame/dungeon.zork";
 				
+				// Construct the Virtual JAR path
+				// Result: /app/textGame/Zork.jar
+				const jarVirtualPath = "/app" + window.location.pathname.replace("index.html", "") + "textGame/Zork.jar";
+
+				console.log("Passing CLEAN URL to Java:", mapUrl);
+
 				// Run
-				await cheerpjRunJar(jarVirtualPath, [mapVirtualPath]);
+				await cheerpjRunJar(jarVirtualPath, [mapUrl]);
 
 			} catch (e) {
 				console.error(e);
-				consoleElement.innerHTML = `<p style="color:red; font-family:monospace;">
-					ERROR: ${e.message}<br><br>
-					Check the F12 Console for details.
-				</p>`;
+				document.getElementById('console-display').innerHTML = "Error: " + e.message;
 			}
 		})();
 	</script>

@@ -64,8 +64,7 @@
 				await cheerpjInit();
 				const consoleElement = document.getElementById('console-display');
 				consoleElement.innerHTML = ""; 
-				const cjDisplay = await cheerpjCreateDisplay(80, 25, consoleElement);
-
+				const cjDisplay = await cheerpjCreateDisplay(800, 600, consoleElement);
 				// Calculate simple path to the JAR
 				let rootPath = window.location.pathname;
 				if (rootPath.endsWith("index.html")) {

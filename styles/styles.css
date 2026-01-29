@@ -139,9 +139,9 @@ nav a:hover {
 
 /* CheerpJ creates a canvas we need to style */
 #console-display canvas {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
+    width: 100% !important;   /* Fit the container width */
+    height: auto !important;  /* Maintain aspect ratio */
+    border-radius: 4px;
 }
 
 .site-footer {

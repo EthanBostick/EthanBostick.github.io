@@ -58,25 +58,42 @@
         <p>&copy; 2026 Ethan. Built with &hearts; and Debian.</p>
     </footer>
 
-    <script>
-        (async function() {
-            // Initialize CheerpJ
-            await cheerpjInit();
+	<script>
+		(async function() {
+			try {
+				// 1. Initialize CheerpJ
+				await cheerpjInit();
 
-            // Create a console element inside our 'console-display' div
-            // 80 columns, 25 rows (standard terminal size)
-            const consoleElement = document.getElementById('console-display');
-            consoleElement.innerHTML = ""; // Clear loading text
-            
-            // Create the graphical/text display for Java
-            // We mount the local folder so the game can read the .zork file
-            const cjDisplay = await cheerpjCreateDisplay(80, 25, consoleElement);
-            
-            // Run the JAR. 
-            // We use /app/ to refer to the root of the web server.
-            // Arguments: ["dungeonOfEthan.zork"] passed to main()
-            cheerpjRunJar("/app/textGame/Zork.jar", ["/app/textGame/dungeonOfEthan.zork"]);
-        })();
-    </script>
+				const consoleElement = document.getElementById('console-display');
+				consoleElement.innerHTML = ""; // Clear loading text
+
+				// 2. Create the display (80x25 standard terminal)
+				const cjDisplay = await cheerpjCreateDisplay(80, 25, consoleElement);
+
+				// 3. DYNAMIC PATH FIX
+				// We get the current folder path (e.g., "/Portfolio" or just "")
+				// preventing the 404 error on GitHub Pages.
+				let rootPath = window.location.pathname;
+				// Remove 'index.html' if it's in the URL
+				rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
+				
+				// Construct the path CheerpJ needs. 
+				// /app/ mounts the domain root, so we append the folder path.
+				// Result example: "/app/Portfolio/textGame/Zork.jar"
+				const jarPath = "/app" + rootPath + "textGame/Zork.jar";
+				const mapPath = "/app" + rootPath + "textGame/dungeonOfEthan.zork";
+
+				console.log("Loading JAR from:", jarPath); // Check your F12 Console if it fails!
+
+				// 4. Run the JAR
+				await cheerpjRunJar(jarPath, [mapPath]);
+
+			} catch (e) {
+				console.error(e);
+				document.getElementById('console-display').innerHTML = 
+					"<p style='color:red'>Error loading Java VM. Check F12 Console.</p>";
+			}
+		})();
+	</script>
 </body>
 </html>

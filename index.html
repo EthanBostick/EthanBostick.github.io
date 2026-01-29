@@ -66,35 +66,35 @@
 				consoleElement.innerHTML = ""; 
 				await cheerpjCreateDisplay(80, 25, consoleElement);
 
-				// 1. Calculate the real web URL for the map
-				// e.g., "https://ethanbostick.github.io/textGame/dungeon.zork"
-				let rootUrl = window.location.href;
-				// Handle if url ends with index.html
-				if (rootUrl.endsWith("index.html")) {
-					rootUrl = rootUrl.substring(0, rootUrl.lastIndexOf("/") + 1);
+				// --- THE FIX ---
+				// Don't use window.location.href (it includes #about)
+				// Use origin (https://site.com) + pathname (/folder/)
+				let cleanBase = window.location.origin + window.location.pathname;
+
+				// Ensure it ends with a slash and strip 'index.html'
+				if (cleanBase.endsWith("index.html")) {
+					cleanBase = cleanBase.substring(0, cleanBase.lastIndexOf("/"));
 				}
-				if (!rootUrl.endsWith("/")) {
-					rootUrl += "/";
+				if (!cleanBase.endsWith("/")) {
+					cleanBase += "/";
 				}
 
-				// Adjust this path if your index.html is in the root but game is in subfolder
-				// Assuming structure: root -> textGame -> dungeon.zork
-				const mapUrl = rootUrl + "textGame/dungeon.zork";
+				// Construct the Clean URL
+				// Result: https://ethanbostick.github.io/textGame/dungeon.zork
+				const mapUrl = cleanBase + "textGame/dungeon.zork";
 				
-				// 2. The JAR still needs the virtual path to run
-				let rootPath = window.location.pathname;
-				 if (rootPath.endsWith("index.html")) {
-					rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
-				}
-				const jarVirtualPath = "/app" + rootPath + "textGame/Zork.jar";
+				// Construct the Virtual JAR path
+				// Result: /app/textGame/Zork.jar
+				const jarVirtualPath = "/app" + window.location.pathname.replace("index.html", "") + "textGame/Zork.jar";
 
-				console.log("Passing URL to Java:", mapUrl);
+				console.log("Passing CLEAN URL to Java:", mapUrl);
 
-				// 3. Pass the HTTP URL as the argument
+				// Run
 				await cheerpjRunJar(jarVirtualPath, [mapUrl]);
 
 			} catch (e) {
 				console.error(e);
+				document.getElementById('console-display').innerHTML = "Error: " + e.message;
 			}
 		})();
 	</script>

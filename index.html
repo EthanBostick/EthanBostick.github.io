@@ -66,31 +66,17 @@
 				consoleElement.innerHTML = ""; 
 				await cheerpjCreateDisplay(80, 25, consoleElement);
 
-				// --- THE FIX ---
-				// Don't use window.location.href (it includes #about)
-				// Use origin (https://site.com) + pathname (/folder/)
-				let cleanBase = window.location.origin + window.location.pathname;
-
-				// Ensure it ends with a slash and strip 'index.html'
-				if (cleanBase.endsWith("index.html")) {
-					cleanBase = cleanBase.substring(0, cleanBase.lastIndexOf("/"));
+				// Calculate simple path to the JAR
+				let rootPath = window.location.pathname;
+				if (rootPath.endsWith("index.html")) {
+					rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
 				}
-				if (!cleanBase.endsWith("/")) {
-					cleanBase += "/";
-				}
+				const jarPath = "/app" + rootPath + "textGame/Zork.jar";
 
-				// Construct the Clean URL
-				// Result: https://ethanbostick.github.io/textGame/dungeon.zork
-				const mapUrl = cleanBase + "textGame/dungeon.zork";
-				
-				// Construct the Virtual JAR path
-				// Result: /app/textGame/Zork.jar
-				const jarVirtualPath = "/app" + window.location.pathname.replace("index.html", "") + "textGame/Zork.jar";
+				console.log("Starting Zork from:", jarPath);
 
-				console.log("Passing CLEAN URL to Java:", mapUrl);
-
-				// Run
-				await cheerpjRunJar(jarVirtualPath, [mapUrl]);
+				// Run without arguments!
+				await cheerpjRunJar(jarPath, []);
 
 			} catch (e) {
 				console.error(e);

@@ -1,127 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset ="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="./styles/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan | Portfolio</title>
+    
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
-	<title>EthanBostick-Portfolio</title>
+    <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
 </head>
 <body>
-	<nav class="nav">
-		<div class="container">
-			<div class="nav__layout">
-				<a href="index.html" class="nav-brand">
-					<svg class="nav-brand__image" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-					<path style="fill:currentColor" d="M11.95 11.95H11.959M11 17C7.13401 17 4 13.866 4 10C4 6.13401 7.13401 3 11 3M12 21C15.866 21 19 17.866 19 14C19 10.134 15.866 7 12 7M12.4 11.95C12.4 12.1985 12.1985 12.4 11.95 12.4C11.7015 12.4 11.5 12.1985 11.5 11.95C11.5 11.7015 11.7015 11.5 11.95 11.5C12.1985 11.5 12.4 11.7015 12.4 11.95Z" stroke="#221F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-					PHP Diary
-				</a>
-				<a href="form.html" class="button">
-					<svg class="button__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-					<path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-					</svg>
-					New entry
-				</a>
-			</div>
-		</div>
-	</nav>
-	<main class="main">
-	<script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
-	<div class="container">
-		<div id="console-container" style="width: 500px; height: 300px; border: 1px solid #333;"></div>
-	<div>
 
-	<script>
-		// Initialize the engine
-		cheerpjInit();
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">ethan@etonkabonk:~$</h1>
+            <nav>
+                <a href="#about">./about</a>
+                <a href="#projects">./projects</a>
+                <a href="#terminal">./play_zork</a>
+            </nav>
+        </div>
+    </header>
 
-		// Create the black terminal box inside your container
-		// Ensure these numbers match your div size above (800, 600)
-		cheerpjCreateDisplay(500, 300, document.getElementById("console-container"));
+    <main class="container">
+        <section id="about" class="intro-grid">
+            <div class="text-content">
+                <h2>About Me</h2>
+                <p>Hello. I'm a developer focusing on systems, data, and retro-gaming. Welcome to my digital workspace.</p>
+                <a href="#terminal" class="btn primary">Run Game</a>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/selfie.JPG" alt="Ethan's Portrait" class="profile-pic">
+            </div>
+        </section>
 
-		// Run the JAR
-		// 'cheerpjRunJar' is the command.
-		// "/app/game.jar" tells it to look for 'game.jar' in the same folder as this HTML file.
-		// Replace 'game.jar' with your EXACT file name.
-		cheerpjRunJar("/textGame/Zork.jar", "dungeonOfEthan.zork");
-	</script><div class="container">
+        <section id="terminal" class="game-section">
+            <h2>Interactive Terminal</h2>
+            <div class="terminal-window">
+                <div class="terminal-bar">
+                    <div class="dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="title">ethan@etonkabonk: ~/Work/Portfolio/textGame</span>
+                </div>
+                <div id="console-display" class="terminal-body">
+                    <p class="loading-text">Initializing Java Virtual Machine...</p>
+                </div>
+            </div>
+            <p class="caption">Type commands directly into the window above.</p>
+        </section>
+    </main>
 
-			<h1 class="main-heading">Entries</h1>
-			<div class="card">
-				<div class="card__image-container">
-					<img class="card__image" src="images/im1.jpg" alt=""/>
-				</div>
-				<div class="card__desc-container">
-					<div class="card__desc-time">Week 1</div>
-					<h2 class="card__heading">PLACE HOLDER TEXT1</h2>
-					<p class="card__paragraph">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img class="card__image" src="images/im2.jpg" alt=""/>
-				</div>
-				<div class="card__desc-container">
-					<div class="card__desc-time">Week 2</div>
-					<h2 class="card__heading">PLACE HOLDER TEXT2</h2>
-					<p class="card__paragraph">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img class="card__image" src="images/im3.jpg" alt=""/>
-				</div>
-				<div class="card__desc-container">
-					<div class="card__desc-time">Week 3</div>
-					<h2 class="card__heading">PLACE HOLDER TEXT2</h2>
-					<p class="card__paragraph">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img class="card__image" src="images/im4.jpg" alt=""/>
-				</div>
-				<div class="card__desc-container">
-					<div class="card__desc-time">Week 4</div>
-					<h2 class="card__heading">PLACE HOLDER TEXT2</h2>
-					<p class="card__paragraph">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
-			</div>
-			<ul class="pagination">
-				<li class="pagination__li">
-					<a class="pagination__link pagination__link--prev" href="#">&#x23F4</a>
-				</li>
-				<li class="pagination__li">
-					<a class="pagination__link pagination__link--active" href="#">1</a>
-				</li>
-				<li class="pagination__li">
-					<a class="pagination__link" href="#">2</a>
-				</li>
-				<li class="pagination__li">
-					<a class="pagination__link" href="#">3</a>
-				</li>
-				<li class="pagination__li">
-					<a class="pagination__link pagination__link--next" href="#">&#x23F5</a>
-				</li>
-			</ul>
-		</div>
-	</main>
-	<footer class="footer">
-		<div class="container">
-			<h3 class="footer__heading">PHP diary project</h3>
-			<p class="footer__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-		</div>
-	</footer>
+    <footer class="site-footer">
+        <p>&copy; 2026 Ethan. Built with &hearts; and Debian.</p>
+    </footer>
+
+    <script>
+        (async function() {
+            // Initialize CheerpJ
+            await cheerpjInit();
+
+            // Create a console element inside our 'console-display' div
+            // 80 columns, 25 rows (standard terminal size)
+            const consoleElement = document.getElementById('console-display');
+            consoleElement.innerHTML = ""; // Clear loading text
+            
+            // Create the graphical/text display for Java
+            // We mount the local folder so the game can read the .zork file
+            const cjDisplay = await cheerpjCreateDisplay(80, 25, consoleElement);
+            
+            // Run the JAR. 
+            // We use /app/ to refer to the root of the web server.
+            // Arguments: ["dungeonOfEthan.zork"] passed to main()
+            cheerpjRunJar("/app/textGame/Zork.jar", ["/app/textGame/dungeonOfEthan.zork"]);
+        })();
+    </script>
 </body>
 </html>

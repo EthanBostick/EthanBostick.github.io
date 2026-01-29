@@ -60,39 +60,60 @@
 
 	<script>
 		(async function() {
+			const consoleElement = document.getElementById('console-display');
+			
 			try {
-				await cheerpjInit();
-				const consoleElement = document.getElementById('console-display');
-				consoleElement.innerHTML = ""; 
-
-				const cjDisplay = await cheerpjCreateDisplay(80, 25, consoleElement);
-
-				// --- THE FIX ---
-				// 1. Get the current folder path from the browser URL
-				// On Localhost, this might be "/"
-				// On GitHub, this is likely "/Portfolio/" (or your repo name)
-				let repoPath = window.location.pathname;
+				// 1. Calculate the Real URL (for debugging)
+				// This handles both root domain and subfolders automatically
+				let baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
 				
-				// Cleanup: Ensure it ends with a slash and remove 'index.html' if present
-				if (repoPath.endsWith("index.html")) {
-					repoPath = repoPath.substring(0, repoPath.lastIndexOf("/") + 1);
+				// If we are in the root, we need to append the textGame path
+				// Adjust this if your index.html is not in the same root as textGame folder
+				if (!baseUrl.includes("textGame")) {
+					// If we are at root/, look in textGame/
+					// If we are already in textGame/ (unlikely), don't add it.
 				}
-				if (!repoPath.endsWith("/")) {
-					repoPath += "/";
+				
+				// The paths CheerpJ uses
+				// "rootPath" is just the path part of the URL (e.g., /Portfolio/)
+				let rootPath = window.location.pathname;
+				if (rootPath.endsWith("index.html")) {
+					rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
+				}
+				if (!rootPath.endsWith("/")) {
+					rootPath += "/";
 				}
 
-				// 2. Construct the absolute paths for CheerpJ
-				// /app/ is the virtual root where CheerpJ mounts your website
-				const jarPath = "/app" + repoPath + "textGame/Zork.jar";
-				const mapPath = "/app" + repoPath + "textGame/dungeon.zork";
+				// Define the paths
+				const jarVirtualPath = "/app" + rootPath + "textGame/Zork.jar";
+				const mapVirtualPath = "/app" + rootPath + "textGame/dungeon.zork";
+				const realMapUrl = rootPath + "textGame/dungeon.zork";
 
-				console.log("Java Main Args[0] will be:", mapPath); 
+				// 2. PRE-FLIGHT CHECK
+				// We try to fetch the file via JS first to see if it exists.
+				console.log("Testing if file exists at URL:", realMapUrl);
+				const check = await fetch(realMapUrl);
+				
+				if (!check.ok) {
+					throw new Error(`Browser cannot download file! \nUrl: ${realMapUrl} \nServer Status: ${check.status} (${check.statusText})`);
+				} else {
+					console.log("File found! Starting Java...");
+				}
 
-				// 3. Pass the mapPath as the first argument (args[0])
-				await cheerpjRunJar(jarPath, [mapPath]);
+				// 3. Start Java
+				await cheerpjInit();
+				consoleElement.innerHTML = ""; // Clear loading text
+				await cheerpjCreateDisplay(80, 25, consoleElement);
+				
+				// Run
+				await cheerpjRunJar(jarVirtualPath, [mapVirtualPath]);
 
 			} catch (e) {
 				console.error(e);
+				consoleElement.innerHTML = `<p style="color:red; font-family:monospace;">
+					ERROR: ${e.message}<br><br>
+					Check the F12 Console for details.
+				</p>`;
 			}
 		})();
 	</script>

@@ -61,36 +61,38 @@
 	<script>
 		(async function() {
 			try {
-				// 1. Initialize CheerpJ
 				await cheerpjInit();
-
 				const consoleElement = document.getElementById('console-display');
-				consoleElement.innerHTML = ""; // Clear loading text
+				consoleElement.innerHTML = ""; 
 
-				// 2. Create the display (80x25 standard terminal)
 				const cjDisplay = await cheerpjCreateDisplay(80, 25, consoleElement);
 
-				// 3. DYNAMIC PATH FIX
-				// We get the current folder path (e.g., "/Portfolio" or just "")
-				// preventing the 404 error on GitHub Pages.
-				let rootPath = window.location.pathname;
-				// Remove 'index.html' if it's in the URL
-				rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
+				// --- THE FIX ---
+				// 1. Get the current folder path from the browser URL
+				// On Localhost, this might be "/"
+				// On GitHub, this is likely "/Portfolio/" (or your repo name)
+				let repoPath = window.location.pathname;
 				
-				// Construct the path CheerpJ needs. 
-				// /app/ mounts the domain root, so we append the folder path.
-				// Result example: "/app/Portfolio/textGame/Zork.jar"
-				const jarPath = "/app" + rootPath + "textGame/Zork.jar";
-				const mapPath = "/app" + rootPath + "textGame/dungeon.zork";
-				console.log("Loading JAR from:", jarPath); // Check your F12 Console if it fails!
+				// Cleanup: Ensure it ends with a slash and remove 'index.html' if present
+				if (repoPath.endsWith("index.html")) {
+					repoPath = repoPath.substring(0, repoPath.lastIndexOf("/") + 1);
+				}
+				if (!repoPath.endsWith("/")) {
+					repoPath += "/";
+				}
 
-				// 4. Run the JAR
+				// 2. Construct the absolute paths for CheerpJ
+				// /app/ is the virtual root where CheerpJ mounts your website
+				const jarPath = "/app" + repoPath + "textGame/Zork.jar";
+				const mapPath = "/app" + repoPath + "textGame/dungeon.zork";
+
+				console.log("Java Main Args[0] will be:", mapPath); 
+
+				// 3. Pass the mapPath as the first argument (args[0])
 				await cheerpjRunJar(jarPath, [mapPath]);
 
 			} catch (e) {
 				console.error(e);
-				document.getElementById('console-display').innerHTML = 
-					"<p style='color:red'>Error loading Java VM. Check F12 Console.</p>";
 			}
 		})();
 	</script>

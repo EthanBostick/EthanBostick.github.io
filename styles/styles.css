@@ -1,30 +1,52 @@
 :root {
-    /* --- GRUVBOX DARK PALETTE --- */
+    /* --- 1. THE PALETTE (Gruvbox Dark Definitions) --- */
+    --gruv-bg:       #282828;  /* Dark0 (Main Body) */
+    --gruv-bg-hard:  #1d2021;  /* Dark0_hard (Terminal Black) */
+    --gruv-bg-soft:  #32302f;  /* Dark0_soft (Panels/Menus) */
     
-    /* Backgrounds: 'Hard' for terminal, 'Medium' for body */
-    --bg-color: #282828;        /* Gruvbox Dark Medium */
-    --terminal-bg: #1d2021;     /* Gruvbox Dark Hard (Deep Black) */
-    --terminal-header: #3c3836; /* Gruvbox Dark Soft (Lighter Bar) */
+    --gruv-fg:       #ebdbb2;  /* Light1 (Main Text) */
+    --gruv-fg-dim:   #a89984;  /* Gray (Muted Text/Comments) */
     
-    /* Text: Warm, off-white */
-    --text-color: #ebdbb2;      /* Gruvbox Light Foreground */
+    --gruv-red:      #fb4934;
+    --gruv-green:    #b8bb26;
+    --gruv-yellow:   #fabd2f;
+    --gruv-blue:     #83a598;
+    --gruv-purple:   #d3869b;
+    --gruv-aqua:     #8ec07c;  
+    --gruv-orange:   #fe8019;
+    --gruv-gray:     #928374;
+
+    /* --- 2. SEMANTIC MAP (How we use them) --- */
+    /* Backgrounds */
+    --bg-color:         var(--gruv-bg);
+    --terminal-bg:      var(--gruv-bg-hard);
+    --panel-bg:         var(--gruv-bg-soft);
+    
+    /* UI Elements */
+    --border-color:     #504945;  /* Gruvbox Dark2 */
+    --border-dim:       #3c3836;  /* Gruvbox Dark1 */
+    --text-main:        var(--gruv-fg);
+    --text-muted:       var(--gruv-gray);
     
     /* Accents */
-    --accent: #b8bb26;          /* Gruvbox Green (Bright) */
-    --accent-dim: #98971a;      /* Gruvbox Green (Dark) */
+    --accent:           var(--gruv-green);    /* Main Brand Color */
+    --accent-dim:       #98971a;              /* Darker Green */
+    --link-color:       var(--gruv-blue);
+    --link-hover:       var(--gruv-orange);
     
-    /* Alternative Accents (Swap these if you prefer Orange/Red!) */
-    /* --accent: #fabd2f; */    /* Gruvbox Yellow */
-    /* --accent: #fb4934; */    /* Gruvbox Red */
-    
-    /* Fonts (Keep your existing fonts) */
+    /* File Types */
+    --file-dir:         var(--gruv-aqua);     /* Directories = Aqua */
+    --file-exec:        var(--gruv-green);    /* Executables = Green */
+    --file-text:        var(--gruv-fg);       /* Text Files = White */
+
+    /* Fonts */
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-mono: 'Fira Code', 'Courier New', monospace;
 }
 
 body {
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.6;
 }
@@ -37,7 +59,7 @@ body {
 
 /* Header */
 .site-header {
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
     margin-bottom: 3rem;
 }
@@ -55,7 +77,7 @@ body {
 }
 
 nav a {
-    color: var(--text-color);
+    color: var(--text-main);
     text-decoration: none;
     margin-left: 1.5rem;
     font-family: var(--font-mono);
@@ -108,15 +130,15 @@ nav a:hover {
     overflow: hidden;
     font-family: var(--font-mono);
     margin: 2rem 0;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
 }
 
 .terminal-bar {
-    background: var(--terminal-header);
+    background: var(--panel-bg);
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border-dim);
 }
 
 .dots {
@@ -130,15 +152,17 @@ nav a:hover {
     height: 12px;
     border-radius: 50%;
 }
-.dot.red { background: #cc241d; }    /* Gruvbox Red */
-.dot.yellow { background: #d79921; } /* Gruvbox Yellow */
-.dot.green { background: #98971a; }  /* Gruvbox Green */
+
+/* NOW USING GLOBAL VARIABLES */
+.dot.red    { background: var(--gruv-red); }
+.dot.yellow { background: var(--gruv-yellow); }
+.dot.green  { background: var(--gruv-green); }
 
 .terminal-bar .title {
     font-size: 0.85rem;
-    color: #aaa;
-    margin: 0 auto; /* Center title */
-    padding-right: 50px; /* Offset the dots width for true center */
+    color: var(--text-muted);
+    margin: 0 auto;
+    padding-right: 50px;
 }
 
 /* The actual play area */
@@ -152,8 +176,8 @@ nav a:hover {
 
 /* CheerpJ creates a canvas we need to style */
 #console-display canvas {
-    width: 100% !important;   /* Fit the container width */
-    height: auto !important;  /* Maintain aspect ratio */
+    width: 100% !important;
+    height: auto !important;
     border-radius: 4px;
 }
 
@@ -162,7 +186,7 @@ nav a:hover {
     margin-top: 4rem;
     padding: 2rem 0;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted);
 }
 
 /* Mobile Tweak */
@@ -178,7 +202,7 @@ nav a:hover {
 
 /* --- NEW: Directory List (projects.html) --- */
 .file-browser {
-    padding: 0; /* Remove padding for list view */
+    padding: 0;
 }
 
 .file-list {
@@ -188,45 +212,46 @@ nav a:hover {
 
 .file-row {
     display: grid;
-    grid-template-columns: 100px 80px 80px 80px 1fr; /* Columns for permissions, user, etc */
+    grid-template-columns: 100px 80px 80px 80px 1fr;
     padding: 0.5rem 1rem;
-    font-family: 'Fira Code', monospace;
+    font-family: var(--font-mono);
     font-size: 0.9rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-dim);
     cursor: pointer;
+    color: var(--text-muted); /* Default text color for rows */
 }
 
 .file-row:hover {
-    background-color: #2a2a2a;
+    background-color: var(--panel-bg);
 }
 
 .header {
-    color: #666;
+    color: var(--text-muted);
     font-weight: bold;
-    border-bottom: 2px solid #444;
+    border-bottom: 2px solid var(--border-color);
     cursor: default;
 }
 
-/* Colors for file types */
-.name.executable { color: #27c93f; font-weight: bold; } /* Green */
-.name.text-file { color: #e0e0e0; } /* White */
-.name.directory { color: #5dade2; font-weight: bold; } /* Blue */
+/* Colors for file types - NOW USING VARIABLES */
+.name.executable { color: var(--file-exec); font-weight: bold; } 
+.name.text-file  { color: var(--file-text); } 
+.name.directory  { color: var(--file-dir);  font-weight: bold; } 
 
 /* The hidden details section */
 .file-details {
-    background: #111;
+    background: var(--terminal-bg);
     padding: 1.5rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-dim);
     font-family: var(--font-main);
 }
 
 .file-details p {
     margin-bottom: 0.5rem;
-    color: #ccc;
+    color: var(--text-main);
 }
 
 details[open] summary {
-    background-color: #333;
+    background-color: var(--panel-bg);
 }
 
 /* --- NEW: Game Page Layout (games.html) --- */
@@ -238,10 +263,10 @@ details[open] summary {
 }
 
 .game-menu {
-    background: #1e1e1e;
+    background: var(--panel-bg);
     padding: 1.5rem;
     border-radius: 6px;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
 }
 
 .game-menu ul {
@@ -252,21 +277,21 @@ details[open] summary {
 .game-link {
     display: block;
     padding: 0.5rem;
-    color: #888;
+    color: var(--text-muted);
     text-decoration: none;
-    font-family: monospace;
+    font-family: var(--font-mono);
     transition: 0.2s;
 }
 
 .game-link:hover, .game-link.active-game {
-    color: var(--accent);
-    background: #2a2a2a;
-    padding-left: 1rem; /* Slide effect */
+    color: var(--link-hover);
+    background: var(--bg-color);
+    padding-left: 1rem;
 }
 
 .status-text {
     padding: 2rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--accent);
     animation: blink 1s infinite;
 }
@@ -277,14 +302,11 @@ details[open] summary {
 
 /* Mobile Responsive */
 @media (max-width: 800px) {
-    /* Stack game menu on top of game screen */
     .game-grid {
         grid-template-columns: 1fr;
     }
-
-    /* Collapse file list columns on small screens */
     .file-row {
-        grid-template-columns: 1fr; /* Only show name */
+        grid-template-columns: 1fr;
     }
     .perm, .user, .size, .date {
         display: none;
@@ -295,51 +317,46 @@ details[open] summary {
 
 .man-pages {
     margin-top: 4rem;
-    border-top: 2px dashed #333;
+    border-top: 2px dashed var(--border-color);
     padding-top: 2rem;
 }
 
 .doc-header h2 {
     font-family: var(--font-mono);
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 2rem;
     display: inline-block;
 }
 
-/* The Man Page Container */
 .man-entry {
     margin-bottom: 4rem;
-    font-family: var(--font-mono); /* Force Monospace */
-    color: #ccc;
+    font-family: var(--font-mono);
+    color: var(--text-main);
 }
 
-/* The Header Bar (e.g. ZORK(1)) */
 .man-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
     font-weight: bold;
-    color: var(--accent); /* Uses your terminal green */
+    color: var(--gruv-yellow); /* Classic Man Page Header Color */
 }
 
-/* Indentation for Sections */
 .man-section {
     margin-bottom: 1.5rem;
-    padding-left: 3rem; /* Classic man page indentation */
+    padding-left: 3rem;
 }
 
-/* Section Headers (NAME, SYNOPSIS) */
 .man-section h3 {
-    margin-left: -3rem; /* Pull header back to left */
+    margin-left: -3rem;
     font-size: 1rem;
-    color: #fff;
+    color: var(--text-main);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
 
-/* Lists (Controls) */
 .man-list {
     list-style: none;
     padding: 0;
@@ -351,7 +368,7 @@ details[open] summary {
 
 .arg {
     font-weight: bold;
-    color: var(--accent);
+    color: var(--gruv-red); /* Arguments in Red for contrast */
 }
 
 /* --- IMAGE GALLERY STYLES --- */
@@ -364,48 +381,47 @@ details[open] summary {
 
 .terminal-figure {
     margin: 0;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
     padding: 5px;
-    background: #000;
-    max-width: 45%; /* Fit two images side by side */
+    background: var(--terminal-bg);
+    max-width: 45%;
 }
 
 .img-content {
     width: 100%;
     height: auto;
     display: block;
-    filter: grayscale(80%); /* Optional: Makes images look "retro" */
+    filter: grayscale(80%);
     transition: filter 0.3s;
 }
 
 .terminal-figure:hover .img-content {
-    filter: grayscale(0%); /* Color on hover */
+    filter: grayscale(0%);
 }
 
 .img-placeholder {
     width: 200px;
     height: 150px;
-    background: #222;
+    background: var(--terminal-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #555;
+    color: var(--text-muted);
     font-size: 0.8rem;
-    border: 1px dashed #444;
+    border: 1px dashed var(--border-color);
 }
 
 figcaption {
     text-align: center;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-muted);
     margin-top: 0.5rem;
     font-style: italic;
 }
 
-/* Mobile Tweak */
 @media (max-width: 768px) {
     .man-section {
-        padding-left: 0; /* Remove indent on small screens */
+        padding-left: 0;
     }
     .man-section h3 {
         margin-left: 0;
@@ -417,21 +433,18 @@ figcaption {
 
 /* --- SYSTEM ROWS (Zig-Zag Layout) --- */
 
-/* The Container for a single section */
 .sys-row {
     display: flex;
-    align-items: center; /* Vertically center content */
+    align-items: center;
     gap: 4rem;
-    margin-bottom: 6rem; /* Space between sections */
+    margin-bottom: 6rem;
     padding: 2rem 0;
 }
 
-/* The "Reverse" modifier flips the order for the next section */
 .sys-row.reverse {
     flex-direction: row-reverse;
 }
 
-/* 50% width for text, 50% for media */
 .sys-text {
     flex: 1;
 }
@@ -442,19 +455,18 @@ figcaption {
 }
 
 /* --- TERMINAL WINDOW FRAMES FOR IMAGES --- */
-/* This makes every image look like a pop-up window */
 .window-frame {
-    background: #1e1e1e;
-    border: 1px solid #444;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.5); /* Hard shadow for retro feel */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
     overflow: hidden;
 }
 
 .window-bar {
-    background: #333;
+    background: var(--border-dim); /* Slightly lighter than panel */
     padding: 5px 10px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
 }
@@ -462,21 +474,20 @@ figcaption {
 .window-title {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: #aaa;
-    margin-left: auto; /* Pushes title to the right or center */
+    color: var(--text-muted);
+    margin-left: auto;
 }
 
-/* The Image inside the frame */
 .window-content img {
     display: block;
     width: 100%;
     height: auto;
-    filter: grayscale(30%) contrast(110%); /* Slight retro filter */
+    filter: grayscale(30%) contrast(110%);
     transition: filter 0.3s;
 }
 
 .window-frame:hover .window-content img {
-    filter: grayscale(0%) contrast(100%); /* Full color on hover */
+    filter: grayscale(0%) contrast(100%);
 }
 
 /* --- TYPOGRAPHY FOR SECTIONS --- */
@@ -484,15 +495,15 @@ figcaption {
     font-family: var(--font-mono);
     color: var(--accent);
     margin-bottom: 1rem;
-    border-left: 3px solid var(--accent); /* Green line on left */
+    border-left: 3px solid var(--accent);
     padding-left: 1rem;
     font-size: 1.5rem;
 }
 
 .sys-tag {
     display: inline-block;
-    background: #333;
-    color: #fff;
+    background: var(--border-dim);
+    color: var(--text-main);
     padding: 2px 8px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
@@ -501,7 +512,6 @@ figcaption {
     margin-top: 1rem;
 }
 
-/* Mobile Tweak: Stack everything vertically on phones */
 @media (max-width: 768px) {
     .sys-row, .sys-row.reverse {
         flex-direction: column;

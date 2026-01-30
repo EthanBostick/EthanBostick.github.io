@@ -277,3 +277,127 @@ details[open] summary {
         display: none;
     }
 }
+
+/* --- MAN PAGE STYLES --- */
+
+.man-pages {
+    margin-top: 4rem;
+    border-top: 2px dashed #333;
+    padding-top: 2rem;
+}
+
+.doc-header h2 {
+    font-family: var(--font-mono);
+    color: #666;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+/* The Man Page Container */
+.man-entry {
+    margin-bottom: 4rem;
+    font-family: var(--font-mono); /* Force Monospace */
+    color: #ccc;
+}
+
+/* The Header Bar (e.g. ZORK(1)) */
+.man-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: var(--accent); /* Uses your terminal green */
+}
+
+/* Indentation for Sections */
+.man-section {
+    margin-bottom: 1.5rem;
+    padding-left: 3rem; /* Classic man page indentation */
+}
+
+/* Section Headers (NAME, SYNOPSIS) */
+.man-section h3 {
+    margin-left: -3rem; /* Pull header back to left */
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* Lists (Controls) */
+.man-list {
+    list-style: none;
+    padding: 0;
+}
+
+.man-list li {
+    margin-bottom: 0.5rem;
+}
+
+.arg {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+/* --- IMAGE GALLERY STYLES --- */
+.man-gallery {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.terminal-figure {
+    margin: 0;
+    border: 1px solid #444;
+    padding: 5px;
+    background: #000;
+    max-width: 45%; /* Fit two images side by side */
+}
+
+.img-content {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(80%); /* Optional: Makes images look "retro" */
+    transition: filter 0.3s;
+}
+
+.terminal-figure:hover .img-content {
+    filter: grayscale(0%); /* Color on hover */
+}
+
+.img-placeholder {
+    width: 200px;
+    height: 150px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 0.8rem;
+    border: 1px dashed #444;
+}
+
+figcaption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .man-section {
+        padding-left: 0; /* Remove indent on small screens */
+    }
+    .man-section h3 {
+        margin-left: 0;
+    }
+    .terminal-figure {
+        max-width: 100%;
+    }
+}

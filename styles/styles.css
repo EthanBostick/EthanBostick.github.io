@@ -35,13 +35,13 @@
     --link-hover:       var(--gruv-orange);
     
     /* File Types */
-    --file-dir:         var(--gruv-aqua);     /* Directories = Aqua */
+    --file-dir:         var(--gruv-blue);     /* Directories = Blue */
     --file-exec:        var(--gruv-green);    /* Executables = Green */
     --file-text:        var(--gruv-fg);       /* Text Files = White */
 
     /* Fonts */
     --font-main: 'JetBrains Mono', monospace;
-    --font-mono: 'JetBrains Mono', 'NerdFont', 'Fira Code', monospace;
+    --font-mono: 'JetBrains Mono', 'NerdFont', monospace;
 }
 
 body {

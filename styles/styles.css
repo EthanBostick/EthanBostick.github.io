@@ -569,3 +569,47 @@ figcaption {
     color: var(--gruv-orange); /* Changes color when you hover the window */
     transition: color 0.3s ease;
 }
+/* --- STACKED TERMINALS --- */
+
+/* 1. The Container needs to be the anchor */
+.terminal-stack {
+    position: relative; /* Essential for absolute children */
+    min-height: 400px;  /* Ensure enough height for both */
+}
+
+/* 2. The Base (Cow) - Push it up/left slightly so overlay fits */
+.term-base {
+    width: 90%;
+    margin-bottom: 2rem; /* Safety space */
+    z-index: 1;
+}
+
+/* 3. The Overlay (Bonsai) - Pin to bottom right */
+.term-overlay {
+    position: absolute;
+    bottom: 0;       /* Align to bottom edge */
+    right: 0;        /* Align to right edge */
+    width: 65%;      /* Make it smaller than the base */
+    z-index: 2;      /* Sit on top */
+
+    /* Stronger shadow to separate the layers */
+    box-shadow: -15px -15px 0px rgba(0,0,0,0.5);
+}
+
+/* 4. Bonsai Specific Color */
+.bonsai-art {
+    color: var(--gruv-green); /* Make the tree green */
+    font-size: 0.8rem; /* ASCII trees can be wide, shrink text slightly */
+    line-height: 1.1;
+}
+
+/* Mobile Tweak: Unstack them on phones so they don't squish */
+@media (max-width: 768px) {
+    .term-overlay {
+        position: relative; /* Reset to normal flow */
+        width: 100%;
+        margin-top: -2rem; /* Slight overlap vertically */
+        right: auto;
+        bottom: auto;
+    }
+}

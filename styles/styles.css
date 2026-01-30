@@ -40,8 +40,8 @@
     --file-text:        var(--gruv-fg);       /* Text Files = White */
 
     /* Fonts */
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-mono: 'Fira Code', 'Courier New', monospace;
+    --font-main: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', 'NerdFont', 'Fira Code', monospace;
 }
 
 body {
@@ -85,7 +85,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: var(--file-dir);
 }
 
 /* Grid Layout */

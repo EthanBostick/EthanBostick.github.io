@@ -26,7 +26,7 @@
             <h3>Available Cartridges</h3>
             <ul>
                 <li><a href="?id=zork" class="game-link" id="link-zork">> Dungeon of Ethan (Zork)</a></li>
-                <li><a href="?id=other" class="game-link" id="link-other">> Mystery Text Game 2</a></li>
+                <li><a href="?id=space" class="game-link" id="link-other">> Project Bad Math</a></li>
             </ul>
             
             <div class="instructions">
@@ -53,6 +53,9 @@
 
     <script>
         (async function() {
+			// 1. Check URL for "?id=xyz"
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
             const games = {
 				'zork': { 
 					jar: 'Zork.jar', 
@@ -60,21 +63,12 @@
 					// These strings are passed to public static void main(String[] args)
 					args: ["req.zork"] 
 				},
-				'other': { 
+				'space': { 
 					jar: 'BadMath.jar', 
 					name: 'Project Bad Math',
 					args: [] // No special args for this one
 				}
 			};
-			// 1. Check URL for "?id=xyz"
-            const urlParams = new URLSearchParams(window.location.search);
-            const gameId = urlParams.get('id');
-
-            // 2. Define your games here
-            const games = {
-                'zork': { jar: 'Zork.jar', name: 'Dungeon of Ethan' },
-                'space': { jar: 'BadMath.jar', name: 'Project Bad Math' }
-            };
 
             const consoleElement = document.getElementById('console-display');
 
@@ -98,9 +92,12 @@
                     
                     // Point to the 'games' folder
                     const jarPath = "/app" + rootPath + "games/" + games[gameId].jar;
+
+					const javaArgs = games[gameId].args || [];
                     
                     console.log("Loading:", jarPath);
-                    await cheerpjRunJar(jarPath, []);
+					console.log("With Args:", javaArgs)
+                    await cheerpjRunJar(jarPath, javaArgs);
 
                 } catch (e) {
                     consoleElement.innerHTML = `<p style="color:red">Error: ${e.message}</p>`;

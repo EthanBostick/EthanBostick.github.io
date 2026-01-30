@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ethan | Projects</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">ethan@etonkabonk:~/projects$</h1>
+            <nav>
+                <a href="index.html">../home</a>
+                <a href="projects.html" class="active">./projects</a>
+                <a href="games.html">../arcade</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Directory Listing</h2>
+        <div class="terminal-window file-browser">
+            <div class="terminal-bar">
+                <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                <span class="title">ls -l ./active_projects</span>
+            </div>
+            
+            <div class="file-list">
+                <div class="file-row header">
+                    <span class="perm">PERMISSIONS</span>
+                    <span class="user">USER</span>
+                    <span class="size">SIZE</span>
+                    <span class="date">DATE</span>
+                    <span class="name">NAME</span>
+                </div>
+
+                <details class="file-entry">
+                    <summary class="file-row">
+                        <span class="perm">-rwxr-xr-x</span>
+                        <span class="user">ethan</span>
+                        <span class="size">4.2MB</span>
+                        <span class="date">Jan 08</span>
+                        <span class="name executable">sec_scraper.py</span>
+                    </summary>
+                    <div class="file-details">
+                        <p>> <strong>Description:</strong> A Python tool that scrapes financial documents from the SEC EDGAR database to train LLMs.</p>
+                        <p>> <strong>Tech Stack:</strong> Python, Requests, Pandas</p>
+                        <div class="project-gallery">
+                            <div class="img-placeholder">[Image: terminal_screenshot.png]</div>
+                        </div>
+                        <a href="#" class="btn-link">View on GitHub</a>
+                    </div>
+                </details>
+
+                <details class="file-entry">
+                    <summary class="file-row">
+                        <span class="perm">-rw-r--r--</span>
+                        <span class="user">ethan</span>
+                        <span class="size">12KB</span>
+                        <span class="date">Dec 12</span>
+                        <span class="name text-file">gamblers_ruin.pdf</span>
+                    </summary>
+                    <div class="file-details">
+                        <p>> <strong>Description:</strong> A Monte Carlo simulation applying probability theory to stock RGTI.</p>
+                        <a href="#" class="btn-link">Download PDF</a>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

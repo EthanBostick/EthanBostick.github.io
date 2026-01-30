@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ethan | Arcade</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">ethan@etonkabonk:~/games$</h1>
+            <nav>
+                <a href="index.html">../home</a>
+                <a href="projects.html">../projects</a>
+                <a href="games.html" class="active">./arcade</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container game-grid">
+        
+        <aside class="game-menu">
+            <h3>Available Cartridges</h3>
+            <ul>
+                <li><a href="?id=zork" class="game-link" id="link-zork">> Dungeon of Ethan (Zork)</a></li>
+                <li><a href="?id=other" class="game-link" id="link-other">> Mystery Text Game 2</a></li>
+            </ul>
+            
+            <div class="instructions">
+                <h4>How to Play</h4>
+                <p>1. Select a cartridge above.</p>
+                <p>2. Wait for the JVM to boot.</p>
+                <p>3. Click the terminal to focus.</p>
+                <p>4. Type commands.</p>
+            </div>
+        </aside>
+
+        <section class="game-display">
+            <div class="terminal-window">
+                <div class="terminal-bar">
+                    <span class="title">Java Virtual Machine - /dev/tty1</span>
+                </div>
+                <div id="console-display">
+                    <p class="status-text">Select a game to initialize system...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        (async function() {
+            const games = {
+				'zork': { 
+					jar: 'Zork.jar', 
+					name: 'Dungeon of Ethan',
+					// These strings are passed to public static void main(String[] args)
+					args: ["req.zork"] 
+				},
+				'other': { 
+					jar: 'TextAdv2.jar', 
+					name: 'Mystery Game',
+					args: [] // No special args for this one
+				}
+			};
+			// 1. Check URL for "?id=xyz"
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+
+            // 2. Define your games here
+            const games = {
+                'zork': { jar: 'Zork.jar', name: 'Dungeon of Ethan' },
+                'other': { jar: 'TextAdv2.jar', name: 'Mystery Game' }
+            };
+
+            const consoleElement = document.getElementById('console-display');
+
+            if (gameId && games[gameId]) {
+                // Highlight the active link
+                document.getElementById('link-' + gameId).classList.add('active-game');
+                
+                try {
+                    consoleElement.innerHTML = `<p class="status-text">Booting ${games[gameId].name}...</p>`;
+                    
+                    await cheerpjInit();
+                    consoleElement.innerHTML = ""; // Clear text
+                    
+                    // Create 800x600 Display (Matches your ZorkTerminal.java)
+                    await cheerpjCreateDisplay(800, 600, consoleElement);
+
+                    // Path Logic
+                    let rootPath = window.location.pathname;
+                    // Remove "games.html" from path if present
+                    rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
+                    
+                    // Point to the 'games' folder
+                    const jarPath = "/app" + rootPath + "games/" + games[gameId].jar;
+                    
+                    console.log("Loading:", jarPath);
+                    await cheerpjRunJar(jarPath, []);
+
+                } catch (e) {
+                    consoleElement.innerHTML = `<p style="color:red">Error: ${e.message}</p>`;
+                }
+            } else {
+                consoleElement.innerHTML = `<p class="status-text">>> SYSTEM IDLE. <br>>> PLEASE INSERT CARTRIDGE (Select from menu).</p>`;
+            }
+        })();
+    </script>
+</body>
+</html>

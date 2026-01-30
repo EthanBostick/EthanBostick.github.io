@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethan | Portfolio</title>
-    
+    <title>Ethan | Home</title>
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/styles.css">
-
-    <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
 </head>
 <body>
 
@@ -16,72 +13,35 @@
         <div class="container">
             <h1 class="logo">ethan@etonkabonk:~$</h1>
             <nav>
-                <a href="#about">./about</a>
-                <a href="#projects">./projects</a>
-                <a href="#terminal">./play_zork</a>
+                <a href="index.html" class="active">./home</a>
+                <a href="projects.html">./projects</a>
+                <a href="games.html">./arcade</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <section id="about" class="intro-grid">
+        <section class="intro-grid">
             <div class="text-content">
-                <h2>About Me</h2>
-                <p>Hello. I'm a developer focusing on systems, data, and retro-gaming. Welcome to my digital workspace.</p>
-                <a href="#terminal" class="btn primary">Run Game</a>
+                <p class="sys-msg"># User detected. Loading profile...</p>
+                <h1>System Administrator &<br>Software Developer</h1>
+                <p>
+                    I build robust systems, scrape data for fun, and turn coffee into code. 
+                    My focus is on backend development, Python automation, and retro-gaming systems.
+                </p>
+                <div class="cmd-box">
+                    <span class="prompt">$</span> <span class="cmd">cat current_status.txt</span><br>
+                    <span class="output">"Seeking full-time opportunities. Configuring servers. Playing Dragon Quest IX."</span>
+                </div>
             </div>
             <div class="image-wrapper">
-                <img src="images/selfie.JPG" alt="Ethan's Portrait" class="profile-pic">
+                <img src="images/selfie.JPG" alt="Ethan" class="profile-pic">
             </div>
-        </section>
-
-        <section id="terminal" class="game-section">
-            <h2>Interactive Terminal</h2>
-            <div class="terminal-window">
-                <div class="terminal-bar">
-                    <div class="dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <span class="title">ethan@etonkabonk: ~/Work/Portfolio/textGame</span>
-                </div>
-                <div id="console-display" class="terminal-body">
-                    <p class="loading-text">Initializing Java Virtual Machine...</p>
-                </div>
-            </div>
-            <p class="caption">Type commands directly into the window above.</p>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Ethan. Built with &hearts; and Debian.</p>
+        <p>root@ethan-web: /var/www/html/ $ _</p>
     </footer>
-
-	<script>
-		(async function() {
-			try {
-				await cheerpjInit();
-				const consoleElement = document.getElementById('console-display');
-				consoleElement.innerHTML = ""; 
-				const cjDisplay = await cheerpjCreateDisplay(800, 600, consoleElement);
-				// Calculate simple path to the JAR
-				let rootPath = window.location.pathname;
-				if (rootPath.endsWith("index.html")) {
-					rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
-				}
-				const jarPath = "/app" + rootPath + "textGame/Zork.jar";
-
-				console.log("Starting Zork from:", jarPath);
-
-				// Run without arguments!
-				await cheerpjRunJar(jarPath, "arggs.zork");
-
-			} catch (e) {
-				console.error(e);
-				document.getElementById('console-display').innerHTML = "Error: " + e.message;
-			}
-		})();
-	</script>
 </body>
 </html>

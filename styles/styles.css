@@ -544,12 +544,12 @@ figcaption {
 /* The command prompt line */
 .command-line {
     margin-bottom: 1rem;
-    color: var(--file-exec); /* Green text for the command */
+    color: var(--text-main); /* Green text for the command */
     font-weight: bold;
 }
 
 .prompt {
-    color: var(--text-muted);
+    color: var(--text-main);
     margin-right: 0.5rem;
 }
 

@@ -1,10 +1,23 @@
 :root {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --accent: #4caf50; /* Terminal Green */
-    --accent-dim: #2e7d32;
-    --terminal-bg: #1e1e1e;
-    --terminal-header: #333;
+    /* --- GRUVBOX DARK PALETTE --- */
+    
+    /* Backgrounds: 'Hard' for terminal, 'Medium' for body */
+    --bg-color: #282828;        /* Gruvbox Dark Medium */
+    --terminal-bg: #1d2021;     /* Gruvbox Dark Hard (Deep Black) */
+    --terminal-header: #3c3836; /* Gruvbox Dark Soft (Lighter Bar) */
+    
+    /* Text: Warm, off-white */
+    --text-color: #ebdbb2;      /* Gruvbox Light Foreground */
+    
+    /* Accents */
+    --accent: #b8bb26;          /* Gruvbox Green (Bright) */
+    --accent-dim: #98971a;      /* Gruvbox Green (Dark) */
+    
+    /* Alternative Accents (Swap these if you prefer Orange/Red!) */
+    /* --accent: #fabd2f; */    /* Gruvbox Yellow */
+    /* --accent: #fb4934; */    /* Gruvbox Red */
+    
+    /* Fonts (Keep your existing fonts) */
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-mono: 'Fira Code', 'Courier New', monospace;
 }
@@ -117,9 +130,9 @@ nav a:hover {
     height: 12px;
     border-radius: 50%;
 }
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
+.dot.red { background: #cc241d; }    /* Gruvbox Red */
+.dot.yellow { background: #d79921; } /* Gruvbox Yellow */
+.dot.green { background: #98971a; }  /* Gruvbox Green */
 
 .terminal-bar .title {
     font-size: 0.85rem;
@@ -399,5 +412,99 @@ figcaption {
     }
     .terminal-figure {
         max-width: 100%;
+    }
+}
+
+/* --- SYSTEM ROWS (Zig-Zag Layout) --- */
+
+/* The Container for a single section */
+.sys-row {
+    display: flex;
+    align-items: center; /* Vertically center content */
+    gap: 4rem;
+    margin-bottom: 6rem; /* Space between sections */
+    padding: 2rem 0;
+}
+
+/* The "Reverse" modifier flips the order for the next section */
+.sys-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 50% width for text, 50% for media */
+.sys-text {
+    flex: 1;
+}
+
+.sys-media {
+    flex: 1;
+    position: relative;
+}
+
+/* --- TERMINAL WINDOW FRAMES FOR IMAGES --- */
+/* This makes every image look like a pop-up window */
+.window-frame {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5); /* Hard shadow for retro feel */
+    overflow: hidden;
+}
+
+.window-bar {
+    background: #333;
+    padding: 5px 10px;
+    border-bottom: 1px solid #222;
+    display: flex;
+    align-items: center;
+}
+
+.window-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-left: auto; /* Pushes title to the right or center */
+}
+
+/* The Image inside the frame */
+.window-content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(30%) contrast(110%); /* Slight retro filter */
+    transition: filter 0.3s;
+}
+
+.window-frame:hover .window-content img {
+    filter: grayscale(0%) contrast(100%); /* Full color on hover */
+}
+
+/* --- TYPOGRAPHY FOR SECTIONS --- */
+.sys-header {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent); /* Green line on left */
+    padding-left: 1rem;
+    font-size: 1.5rem;
+}
+
+.sys-tag {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-top: 1rem;
+}
+
+/* Mobile Tweak: Stack everything vertically on phones */
+@media (max-width: 768px) {
+    .sys-row, .sys-row.reverse {
+        flex-direction: column;
+        gap: 2rem;
     }
 }

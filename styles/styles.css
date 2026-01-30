@@ -530,3 +530,42 @@ figcaption {
         gap: 2rem;
     }
 }
+/* --- COWSAY / ASCII ART STYLES --- */
+
+/* The container for the text */
+.terminal-text {
+    background-color: var(--terminal-bg); /* Uses your deep black variable */
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    color: var(--text-main);
+    overflow-x: auto; /* Adds scrollbar if the cow is too big for mobile */
+}
+
+/* The command prompt line */
+.command-line {
+    margin-bottom: 1rem;
+    color: var(--file-exec); /* Green text for the command */
+    font-weight: bold;
+}
+
+.prompt {
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+}
+
+/* The ASCII Art itself */
+.ascii-art {
+    margin: 0;
+    line-height: 1.2;
+    font-weight: bold;
+    color: var(--gruv-yellow); /* Yellow cow! (Or use --accent for green) */
+
+    /* Crucial for ASCII art alignment: */
+    white-space: pre;
+}
+
+/* Hover Effect: Wake up the cow */
+.window-frame:hover .ascii-art {
+    color: var(--gruv-orange); /* Changes color when you hover the window */
+    transition: color 0.3s ease;
+}

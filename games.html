@@ -1,114 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ethan | Arcade</title>
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+	<meta charset="UTF-8">
+	<title>Ethan | Games</title>
+	<link rel="stylesheet" href="styles/normalize.css">
+	<link rel="stylesheet" href="styles/styles.css">
+	<script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container">
-            <h1 class="logo">ethan@etonkabonk:~/games$</h1>
-            <nav>
-                <a href="index.html">../home</a>
-                <a href="projects.html">../projects</a>
-                <a href="games.html" class="active">./arcade</a>
-            </nav>
-        </div>
-    </header>
+	<header class="site-header">
+		<div class="container">
+			<h1 class="logo">ethan@etonkabonk:~/games$</h1>
+			<nav>
+				<a href="index.html">../home</a>
+				<a href="projects.html">../projects</a>
+				<a href="games.html" class="active">./games</a>
+			</nav>
+		</div>
+	</header>
 
-    <main class="container game-grid">
-        
-        <aside class="game-menu">
-            <h3>Available Cartridges</h3>
-            <ul>
-                <li><a href="?id=zork" class="game-link" id="link-zork">> Dungeon of Ethan (Zork)</a></li>
-                <li><a href="?id=other" class="game-link" id="link-other">> Mystery Text Game 2</a></li>
-            </ul>
-            
-            <div class="instructions">
-                <h4>How to Play</h4>
-                <p>1. Select a cartridge above.</p>
-                <p>2. Wait for the JVM to boot.</p>
-                <p>3. Click the terminal to focus.</p>
-                <p>4. Type commands.</p>
-            </div>
-        </aside>
+	<main class="container">
+		<div class="game-grid">	
+			<aside class="game-menu">
+				<h3>Available Cartridges</h3>
+				<ul>
+					<li><a href="?id=zork" class="game-link" id="link-zork">> Dungeon of Ethan (Zork)</a></li>
+					<li><a href="?id=space" class="game-link" id="link-space">> Project Bad Math</a></li>
+				</ul>
+				
+				<div class="instructions">
+					<h4>How to Play</h4>
+					<p>1. Select a cartridge above.</p>
+					<p>2. Wait for the JVM to boot.</p>
+					<p>3. Click the terminal to focus.</p>
+					<p>4. Type commands.</p>
+				</div>
+			</aside>
 
-        <section class="game-display">
-            <div class="terminal-window">
-                <div class="terminal-bar">
-                    <span class="title">Java Virtual Machine - /dev/tty1</span>
-                </div>
-                <div id="console-display">
-                    <p class="status-text">Select a game to initialize system...</p>
-                </div>
-            </div>
-        </section>
+			<section class="game-display">
+				<div class="terminal-window">
+					<div class="terminal-bar">
+						<span class="title">Java Virtual Machine - /dev/tty1</span>
+					</div>
+					<div id="console-display">
+						<p class="status-text">Select a game to initialize system...</p>
+					</div>
+				</div>
+			</section>
+		</div>
 
-    </main>
+		<section class="man-pages">
+			<div class="doc-header">
+				<h2>/usr/share/doc/games</h2>
+			</div>
 
-    <script>
-        (async function() {
-            const games = {
+			<article class="man-entry" id="doc-zork">
+				<div class="man-header">
+					<span class="cmd-name">ZORK(1)</span>
+					<span class="cmd-date">DEC 2024</span>
+					<span class="cmd-name">USER COMMANDS</span>
+				</div>
+
+				<div class="man-body">
+					<div class="man-section">
+						<h3>NAME</h3>
+						<p><strong>DungeonOfEthan</strong> - a text-based adventure in the Great Underground Empire.</p>
+					</div>
+
+					<div class="man-section">
+						<h3>SYNOPSIS (IMAGES)</h3>
+						<div class="man-gallery">
+							<figure class="terminal-figure">
+								<img src="images/zork_gameplay.jpg" alt="Zork Gameplay" class="img-content">
+								<figcaption>Fig 1. The West of House (Start Screen)</figcaption>
+							</figure>
+
+							<figure class="terminal-figure">
+								<img src="images/zork_map.jpg" alt="Dungeon Map" class="img-content">
+								<figcaption>Fig 2. Early development map sketch</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<div class="man-section">
+						<h3>DESCRIPTION</h3>
+						<p>
+							Dungeon of Ethan is a Java-based implementation of the classic Zork logic.
+							The player explores a complex dungeon, solving puzzles and fighting grues using
+							natural language commands.
+						</p>
+						<p>
+							Features include a custom parser, state-saving mechanics, and a weighted inventory system.
+						</p>
+					</div>
+
+					<div class="man-section">
+						<h3>CONTROLS</h3>
+						<ul class="man-list">
+							<li><span class="arg">n, s, e, w</span> : Move in cardinal directions.</li>
+							<li><span class="arg">take [item]</span> : Add item to inventory.</li>
+							<li><span class="arg">examine [obj]</span> : Get detailed description.</li>
+							<li><span class="arg">xyzzy</span> : [REDACTED]</li>
+						</ul>
+					</div>
+
+					<div class="man-section">
+						<h3>AUTHOR</h3>
+						<p>Written by Ethan. Based on original works by Infocom.</p>
+					</div>
+				</div>
+			</article>
+
+			<hr class="doc-divider">
+
+			<article class="man-entry" id="doc-other">
+				<div class="man-header">
+					<span class="cmd-name">ProjectBadMath(1)</span>
+					<span class="cmd-date">MAY 2024</span>
+					<span class="cmd-name">USER COMMANDS</span>
+				</div>
+
+				<div class="man-body">
+					<div class="man-section">
+						<h3>NAME</h3>
+						<p><strong>mystery_game</strong> - An experimental text parser.</p>
+					</div>
+
+					<div class="man-section">
+						<h3>SYNOPSIS (IMAGES)</h3>
+						<div class="man-gallery">
+							<figure class="terminal-figure">
+								<div class="img-placeholder">[ IMAGE: SECRET_LEVEL.PNG ]</div>
+								<figcaption>Fig 1. The hidden level entrance</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<div class="man-section">
+						<h3>DESCRIPTION</h3>
+						<p>Currently in early alpha. This project tests a new "Conversation Engine" for NPCs.</p>
+					</div>
+				</div>
+			</article>
+
+		</section>
+	</main>
+
+	<script>
+		(async function() {
+			// 1. Check URL for "?id=xyz"
+			const urlParams = new URLSearchParams(window.location.search);
+			const gameId = urlParams.get('id');
+			const games = {
 				'zork': { 
 					jar: 'Zork.jar', 
 					name: 'Dungeon of Ethan',
 					// These strings are passed to public static void main(String[] args)
 					args: ["req.zork"] 
 				},
-				'other': { 
-					jar: 'TextAdv2.jar', 
-					name: 'Mystery Game',
+				'space': { 
+					jar: 'BadMath.jar', 
+					name: 'Project Bad Math',
 					args: [] // No special args for this one
 				}
 			};
-			// 1. Check URL for "?id=xyz"
-            const urlParams = new URLSearchParams(window.location.search);
-            const gameId = urlParams.get('id');
 
-            // 2. Define your games here
-            const games = {
-                'zork': { jar: 'Zork.jar', name: 'Dungeon of Ethan' },
-                'other': { jar: 'TextAdv2.jar', name: 'Mystery Game' }
-            };
+			const consoleElement = document.getElementById('console-display');
 
-            const consoleElement = document.getElementById('console-display');
+			if (gameId && games[gameId]) {
+				// Highlight the active link
+				document.getElementById('link-' + gameId).classList.add('active-game');
+				
+				try {
+					consoleElement.innerHTML = `<p class="status-text">Booting ${games[gameId].name}...</p>`;
+					
+					await cheerpjInit();
+					consoleElement.innerHTML = ""; // Clear text
+					
+					// Create 800x600 Display (Matches your ZorkTerminal.java)
+					await cheerpjCreateDisplay(800, 600, consoleElement);
 
-            if (gameId && games[gameId]) {
-                // Highlight the active link
-                document.getElementById('link-' + gameId).classList.add('active-game');
-                
-                try {
-                    consoleElement.innerHTML = `<p class="status-text">Booting ${games[gameId].name}...</p>`;
-                    
-                    await cheerpjInit();
-                    consoleElement.innerHTML = ""; // Clear text
-                    
-                    // Create 800x600 Display (Matches your ZorkTerminal.java)
-                    await cheerpjCreateDisplay(800, 600, consoleElement);
+					// Path Logic
+					let rootPath = window.location.pathname;
+					// Remove "games.html" from path if present
+					rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
+					
+					// Point to the 'games' folder
+					const jarPath = "/app" + rootPath + "games/" + games[gameId].jar;
 
-                    // Path Logic
-                    let rootPath = window.location.pathname;
-                    // Remove "games.html" from path if present
-                    rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
-                    
-                    // Point to the 'games' folder
-                    const jarPath = "/app" + rootPath + "games/" + games[gameId].jar;
-                    
-                    console.log("Loading:", jarPath);
-                    await cheerpjRunJar(jarPath, []);
+					const javaArgs = games[gameId].args || [];
+					
+					console.log("Loading:", jarPath);
+					console.log("With Args:", javaArgs)
+					await cheerpjRunJar(jarPath, javaArgs);
 
-                } catch (e) {
-                    consoleElement.innerHTML = `<p style="color:red">Error: ${e.message}</p>`;
-                }
-            } else {
-                consoleElement.innerHTML = `<p class="status-text">>> SYSTEM IDLE. <br>>> PLEASE INSERT CARTRIDGE (Select from menu).</p>`;
-            }
-        })();
-    </script>
+				} catch (e) {
+					consoleElement.innerHTML = `<p style="color:red">Error: ${e.message}</p>`;
+				}
+			} else {
+				consoleElement.innerHTML = `<p class="status-text">>> SYSTEM IDLE. <br>>> PLEASE INSERT CARTRIDGE (Select from menu).</p>`;
+			}
+		})();
+	</script>
 </body>
 </html>

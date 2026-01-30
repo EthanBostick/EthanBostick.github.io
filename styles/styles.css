@@ -558,7 +558,7 @@ figcaption {
     margin: 0;
     line-height: 1.2;
     font-weight: bold;
-    color: var(--gruv-yellow); /* Yellow cow! (Or use --accent for green) */
+    color: var(--gruv-yellow-dim); /* Yellow cow! (Or use --accent for green) */
 
     /* Crucial for ASCII art alignment: */
     white-space: pre;
@@ -566,6 +566,6 @@ figcaption {
 
 /* Hover Effect: Wake up the cow */
 .window-frame:hover .ascii-art {
-    color: var(--gruv-orange); /* Changes color when you hover the window */
+    color: var(--gruv-yellow); /* Changes color when you hover the window */
     transition: color 0.3s ease;
 }

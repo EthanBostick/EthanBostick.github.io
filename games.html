@@ -70,15 +70,15 @@
 				<div class="man-body">
 					<div class="man-section">
 						<h3>NAME</h3>
-						<p><strong>DungeonOfEthan</strong> - a text-based adventure in the Great Underground Empire.</p>
+						<p><strong>DungeonOfEthan</strong> - a text-based adventure in the fictional Ethan's mind.</p>
 					</div>
 
 					<div class="man-section">
 						<h3>SYNOPSIS (IMAGES)</h3>
 						<div class="man-gallery">
 							<figure class="terminal-figure">
-								<img src="images/zork_gameplay.jpg" alt="Zork Gameplay" class="img-content">
-								<figcaption>Fig 1. The West of House (Start Screen)</figcaption>
+								<img src="images/QuestSystem.png" alt="Zork UML" class="img-content">
+								<figcaption>Fig 1. Initial UML design of quest system</figcaption>
 							</figure>
 
 							<figure class="terminal-figure">
@@ -92,11 +92,12 @@
 						<h3>DESCRIPTION</h3>
 						<p>
 							Dungeon of Ethan is a Java-based implementation of the classic Zork logic.
-							The player explores a complex dungeon, solving puzzles and fighting grues using
-							natural language commands.
+							The player explores a complex dungeon, solving puzzles and completing quests using
+							natural language commands built with object-oriented programming and design.
 						</p>
 						<p>
-							Features include a custom parser, state-saving mechanics, and a weighted inventory system.
+							Features include a custom parser, state-saving mechanics, quests, item hints, 
+							random events, and a weighted inventory system.
 						</p>
 					</div>
 
@@ -106,13 +107,16 @@
 							<li><span class="arg">n, s, e, w</span> : Move in cardinal directions.</li>
 							<li><span class="arg">take [item]</span> : Add item to inventory.</li>
 							<li><span class="arg">examine [obj]</span> : Get detailed description.</li>
-							<li><span class="arg">xyzzy</span> : [REDACTED]</li>
+							<li><span class="arg">hint [obj]</span> : show item actions.</li>
+							<li><span class="arg">take [questName] quest</span> : Take a quest from quest board.</li>
+							<li><span class="arg">qb/quests</span> : view current quests.</li>
+							<li><span class="arg">submit/turnin [questName]</span> : submit a quest at it's questboard.</li>
 						</ul>
 					</div>
 
 					<div class="man-section">
-						<h3>AUTHOR</h3>
-						<p>Written by Ethan. Based on original works by Infocom.</p>
+						<h3>AUTHORS</h3>
+						<p>Written by Ethan Bostick, Brooke Breneman, and Keith Gray. Based on original works by Infocom.</p>
 					</div>
 				</div>
 			</article>
@@ -129,7 +133,7 @@
 				<div class="man-body">
 					<div class="man-section">
 						<h3>NAME</h3>
-						<p><strong>mystery_game</strong> - An experimental text parser.</p>
+						<p><strong>SpaceGame</strong> - An experimental text-based strategy game.</p>
 					</div>
 
 					<div class="man-section">
@@ -144,7 +148,29 @@
 
 					<div class="man-section">
 						<h3>DESCRIPTION</h3>
-						<p>Currently in early alpha. This project tests a new "Conversation Engine" for NPCs.</p>
+						<p>
+							The first game I designed from the ground up as a Freshman final project. The
+							design process and implementation of this game greatly highlighted the value 
+							of our future object oriented design education.
+							
+						</p>
+						<p>
+							Features include a custom parser, state-saving mechanics, quests, item hints, 
+							random events, and a weighted inventory system.
+						</p>
+					</div>
+
+					<div class="man-section">
+						<h3>CONTROLS</h3>
+						<ul class="man-list">
+							<li><span class="arg">help</span> : view the game manual.</li>
+							<li><span class="arg">qqq</span> : quit the game and show end stats.</li>
+						</ul>
+					</div>
+
+					<div class="man-section">
+						<h3>AUTHORS</h3>
+						<p>Written by Ethan Bostick and Garrett Mckenzie. Fueled by coffee and built through late nights.</p>
 					</div>
 				</div>
 			</article>

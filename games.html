@@ -20,36 +20,36 @@
 		</div>
 	</header>
 
-	<main class="container game-grid">
-		
-		<aside class="game-menu">
-			<h3>Available Cartridges</h3>
-			<ul>
-				<li><a href="?id=zork" class="game-link" id="link-zork">> Dungeon of Ethan (Zork)</a></li>
-				<li><a href="?id=space" class="game-link" id="link-space">> Project Bad Math</a></li>
-			</ul>
-			
-			<div class="instructions">
-				<h4>How to Play</h4>
-				<p>1. Select a cartridge above.</p>
-				<p>2. Wait for the JVM to boot.</p>
-				<p>3. Click the terminal to focus.</p>
-				<p>4. Type commands.</p>
-			</div>
-		</aside>
-
-		<section class="game-display">
-			<div class="terminal-window">
-				<div class="terminal-bar">
-					<span class="title">Java Virtual Machine - /dev/tty1</span>
+	<main class="container">
+		<div class="game-grid">	
+			<aside class="game-menu">
+				<h3>Available Cartridges</h3>
+				<ul>
+					<li><a href="?id=zork" class="game-link" id="link-zork">> Dungeon of Ethan (Zork)</a></li>
+					<li><a href="?id=space" class="game-link" id="link-space">> Project Bad Math</a></li>
+				</ul>
+				
+				<div class="instructions">
+					<h4>How to Play</h4>
+					<p>1. Select a cartridge above.</p>
+					<p>2. Wait for the JVM to boot.</p>
+					<p>3. Click the terminal to focus.</p>
+					<p>4. Type commands.</p>
 				</div>
-				<div id="console-display">
-					<p class="status-text">Select a game to initialize system...</p>
-				</div>
-			</div>
-		</section>
+			</aside>
 
-		<div>
+			<section class="game-display">
+				<div class="terminal-window">
+					<div class="terminal-bar">
+						<span class="title">Java Virtual Machine - /dev/tty1</span>
+					</div>
+					<div id="console-display">
+						<p class="status-text">Select a game to initialize system...</p>
+					</div>
+				</div>
+			</section>
+		</div>
+
 		<section class="man-pages">
 			<div class="doc-header">
 				<h2>/usr/share/doc/games</h2>
@@ -146,7 +146,6 @@
 			</article>
 
 		</section>
-		</div>
 	</main>
 
 	<script>

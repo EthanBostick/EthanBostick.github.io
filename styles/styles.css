@@ -9,8 +9,10 @@
     
     --gruv-red:      #fb4934;
     --gruv-green:    #b8bb26;
+    --gruv-green-dim:#98971A;
     --gruv-yellow:   #fabd2f;
     --gruv-blue:     #83a598;
+    --gruv-blue-dim: #458588;
     --gruv-purple:   #d3869b;
     --gruv-aqua:     #8ec07c;  
     --gruv-orange:   #fe8019;
@@ -29,13 +31,13 @@
     --text-muted:       var(--gruv-gray);
     
     /* Accents */
-    --accent:           var(--gruv-green);    /* Main Brand Color */
-    --accent-dim:       #98971a;              /* Darker Green */
-    --link-color:       var(--gruv-blue);
+    --accent:           var(--gruv-green-dim);    /* Main Brand Color */
+    --accent-dim:       var(--gruv-green);              /* Darker Green */
+    --link-color:       var(--gruv-blue-dim);
     --link-hover:       var(--gruv-orange);
     
     /* File Types */
-    --file-dir:         var(--gruv-blue);     /* Directories = Blue */
+    --file-dir:         var(--gruv-blue-dim);     /* Directories = Blue */
     --file-exec:        var(--gruv-green);    /* Executables = Green */
     --file-text:        var(--gruv-fg);       /* Text Files = White */
 

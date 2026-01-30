@@ -54,6 +54,14 @@ body {
     font-family: var(--font-main);
     line-height: 1.6;
 }
+.dir-path {
+    color: var(--file-dir);
+    font-weight: bold;
+}
+.prompt-text {
+    color: var(--file-text);
+    font-weight: bold;
+}
 
 .container {
     max-width: 900px;

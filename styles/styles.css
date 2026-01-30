@@ -36,7 +36,7 @@
     --accent:           var(--gruv-green-dim);    /* Main Brand Color */
     --accent-dim:       var(--gruv-green);              /* Darker Green */
     --link-color:       var(--gruv-blue-dim);
-    --link-hover:       var(--gruv-orange-dim);
+    --link-hover:       var(--gruv-orange);
     
     /* File Types */
     --file-dir:         var(--gruv-blue-dim);     /* Directories = Blue */

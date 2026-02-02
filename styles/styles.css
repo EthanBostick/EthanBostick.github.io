@@ -1,3 +1,15 @@
+details > summary {
+  list-style: none; /* Firefox / Chrome */
+}
+
+details > summary::-webkit-details-marker {
+  display: none; /* Safari */
+}
+
+details > summary {
+  display: block; /* Overrides default 'list-item' */
+  cursor: pointer;
+}
 :root {
     /* --- 1. THE PALETTE (Gruvbox Dark Definitions) --- */
     --gruv-bg:       #282828;  /* Dark0 (Main Body) */

@@ -277,6 +277,25 @@ nav a:hover {
 details[open] summary {
     background-color: var(--panel-bg);
 }
+/* --- NESTED DIRECTORY STYLES --- */
+
+/* The container for items inside a folder */
+.nested-contents {
+    margin-left: 1.5rem; /* Indent the children */
+    padding-left: 0.5rem; /* Space from the tree line */
+    border-left: 1px dashed var(--border-color); /* The visual tree line */
+}
+
+/* Optional: Make the folder row look slightly different on hover */
+.directory-entry > summary:hover {
+    background-color: var(--panel-bg);
+}
+
+/* Ensure the directory name color uses your Variable */
+.name.directory {
+    color: var(--file-dir); /* Aqua */
+    font-weight: bold;
+}
 
 /* --- NEW: Game Page Layout (games.html) --- */
 .game-grid {

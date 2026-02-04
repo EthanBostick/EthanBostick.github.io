@@ -600,3 +600,57 @@ figcaption {
     color: var(--gruv-yellow); /* Changes color when you hover the window */
     transition: color 0.3s ease;
 }
+/* --- SOCIAL FOOTER (Home Page) --- */
+.social-footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 2px dashed var(--border-color);
+}
+
+.social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 1rem;
+    border: 1px solid transparent; /* Invisible border to prevent jump on hover */
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    width: 100px; /* Fixed width for uniformity */
+}
+
+.social-icon {
+    font-size: 2.5rem;
+    color: var(--text-muted); /* Start dimmed */
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+}
+
+.social-text {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* HOVER EFFECTS */
+.social-item:hover {
+    background-color: var(--panel-bg);
+    border-color: var(--border-color);
+    transform: translateY(-5px); /* Lift up slightly */
+}
+
+.social-item:hover .social-icon,
+.social-item:hover .social-text {
+    color: var(--accent); /* Light up Green (or your accent) */
+}
+
+/* Specific Brand Colors on Hover (Optional - if you want real brand colors) */
+/* .social-item:hover .fa-github { color: #fff; } */
+/* .social-item:hover .fa-linkedin { color: #0077b5; } */
+/* .social-item:hover .fa-brain { color: #ff9d00; } */

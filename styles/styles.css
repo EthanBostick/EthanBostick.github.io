@@ -277,6 +277,10 @@ nav a:hover {
 details[open] summary {
     background-color: var(--panel-bg);
 }
+.force-color {
+    filter: none !important; /* "none" turns off grayscale and contrast shifts */
+}
+
 /* --- NESTED DIRECTORY STYLES --- */
 
 /* The container for items inside a folder */
